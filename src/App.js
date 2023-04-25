@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  const [translated, updateTranslated] = useState("")
+
+  async function getText() {
+    let params = (new URL(document.location)).searchParams;
+    let url = params.get("url");
+    let bias = params.get("bias")
+
+    const response = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
+    const responseData = await response.json();
+    updateTranslated(responseData.article);
+
+}
+
+  useEffect(() => {
+    getText()
+  }, [])
+
+  if (translated) {
+    return (
+      <div className="App">
+        <p>{translated}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="loading-screen"></div>
     </div>
   );
 }
