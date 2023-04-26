@@ -10,9 +10,13 @@ function App() {
     let url = params.get("url");
     let bias = params.get("bias")
 
-    const response = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
-    const responseData = await response.json();
-    updateTranslated(responseData.article);
+    // const response = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
+    // const responseData = await response.json();
+    setTimeout(() =>{
+      let responseData = {article: 'Placeholder text Placeholder text Placeholder text Placeholder text '}
+      updateTranslated(responseData.article);
+    }
+    , 3000)
 
 }
 
