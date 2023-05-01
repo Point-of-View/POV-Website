@@ -3,4 +3,5 @@
     background-color: lightgray;
     color: black;
     border: 1px solid gray;
+    white-space: pre-line;
 }
