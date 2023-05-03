@@ -1,5 +1,6 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import "./article.css"
+import Changes from './changes.js'
 
 
 export default function Article({text, time, type}) {
@@ -9,7 +10,7 @@ export default function Article({text, time, type}) {
             <h2>{type} Text</h2>
 
             { text ? 
-                <p>{text}</p>
+                <p><Changes reason={text}/>{text}</p>
                 :
                 <div>
                     <p>Loading {type.toLowerCase()} text</p>
