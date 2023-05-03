@@ -7,12 +7,13 @@ const DUMMY_DATA = true
 
 function getDummyData(updateOriginal, updateTranslated) {
   setTimeout(() =>{
-    let responseData = {article: 'asdfk jadls;kfj ;lkadsjf;kladsjf k;lsadjfl;adjs f;klajlk;df'}
-    updateOriginal(responseData.article);
+    let responseData = {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
+    updateOriginal(responseData.text);
 
     setTimeout(() =>{
-      let responseData = {article: 'dasfdksfjk;ldasjfkl;adsjfkl;j\\n\\nas;ldkfjak;dlsjfkl;dsaj f;lksadj f'}
-      updateTranslated(responseData.article);
+      let responseData = {ARTICLE: 'Lorem Democrats dolor sit amet, consectetur adipiscing elit, sed Republicans eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                          CHANGES: [['ipsum', 'Democrats', 'I made this change because...'], ['do', 'Republicans', 'This other change was made because']]}
+      updateTranslated(responseData);
     }
     , 5000)
   }
@@ -23,7 +24,7 @@ function getDummyData(updateOriginal, updateTranslated) {
 function App() {
 
   const [original, updateOriginal] = useState("")
-  const [translated, updateTranslated] = useState("")
+  const [translated, updateTranslated] = useState({})
 
   async function getText() {
     if (DUMMY_DATA) {
@@ -41,7 +42,7 @@ function App() {
 
     const response2 = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
     const responseData2 = await response2.json();
-    updateTranslated(responseData2.ARTICLE);
+    updateTranslated(responseData2);
 }
 
   useEffect(() => {
@@ -52,8 +53,8 @@ function App() {
     return (
       <div className="App">
         <main>
-          <Article text={original} time={"1s"} type={"Original"} />
-          <Article text={translated.replaceAll("\\n", '\n')} time={"60s"} type={"Translated"} />
+          <Article text={original} changes={translated.CHANGES} time={"1s"} type={"Original"} />
+          <Article text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} />
         </main>
       </div>
     );
