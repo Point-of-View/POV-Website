@@ -33,9 +33,12 @@ const ArticleText = ({text, changes, type}) => {
 
     if (changes) {
         for (let i=0; i < changes.length; i++) {
-            changedText = changedText.replace(" " + changes[i][pos] + " ", " <!><!!><" + i + ">" + changes[i][pos] + "<!> ")
+            changes[i][pos] = changes[i][pos].replaceAll('"', "")
+            console.log(changes[i][pos])
+            changedText = changedText.replace(changes[i][pos], "<!><!!><" + i + ">" + changes[i][pos] + "<!>")
         }
         splitText = changedText.split('<!>')
+        console.log(splitText)
     }
 
 
