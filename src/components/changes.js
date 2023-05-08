@@ -1,6 +1,7 @@
 import 'react-tooltip/dist/react-tooltip.css'
 import './changes.css'
 import { Tooltip } from 'react-tooltip'
+import { useState, useEffect } from 'react';
 
 export default function Changes({reason, index, text}) {
 
@@ -16,11 +17,19 @@ export default function Changes({reason, index, text}) {
         9: ['#AAAAAA', '#696969'],
         10: ['#111111', '#333333'],
       };
+
+    const [isHovered, setIsHovered] = useState(false);
     
     return (                    
         <span>
-            <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top">{reason}</Tooltip>
-            <p style={{backgroundColor: highlightColors[index + 1][0], display: 'inline'}} className={text.split(" ")[0]}>{text}</p>
+            <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top" className='box'>{reason}</Tooltip>
+            <p className={text.split(" ")[0]}
+            style={{ backgroundColor: (isHovered ? highlightColors[index + 1][0] : highlightColors[index + 1][1]), display: 'inline' }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            >
+            {text}
+            </p>
         </span>
     )
 }
