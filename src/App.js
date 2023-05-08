@@ -3,7 +3,7 @@ import './App.css';
 import Article from './components/article';
 
 
-const DUMMY_DATA = true
+const DUMMY_DATA = false
 
 function getDummyData(updateOriginal, updateTranslated) {
   setTimeout(() =>{
@@ -42,6 +42,7 @@ function App() {
 
     const response2 = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
     const responseData2 = await response2.json();
+    console.log(responseData2)
     updateTranslated(responseData2);
 }
 
