@@ -34,7 +34,7 @@ function App() {
 
     let params = (new URL(document.location)).searchParams;
     let url = params.get("url");
-    let bias = params.get("bias")
+    let bias = params.get("bias");
 
     const response = await fetch(`http://127.0.0.1:5000/scrape?url=${url}`);
     const responseData = await response.json();
@@ -49,12 +49,21 @@ function App() {
     getText()
   }, [])
 
+  const [isHovered, setIsHovered] = useState([false, false]);
+
+  function handleSetIsHovered(index, value) {
+    setIsHovered(prevIsHovered => {
+      const newIsHovered = [...prevIsHovered];
+      newIsHovered[index] = value;
+      return newIsHovered;
+    });
+  }
 
     return (
       <div className="App">
         <main>
-          <Article text={original} changes={translated.CHANGES} time={"1s"} type={"Original"} />
-          <Article text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} />
+          <Article text={original} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
+          <Article text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
         </main>
       </div>
     );

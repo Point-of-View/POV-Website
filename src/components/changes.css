@@ -5,13 +5,12 @@
 }
 
 .box {
-    display: none;
+    display: block;
     position: absolute;
     width: 400px;
     height: auto;
-    top: -210px;
-    left: 100px;
     background: #9C9C9C;
+    opacity: 1;
     padding: 20px;
     text-align: center;
     font-weight: 900;

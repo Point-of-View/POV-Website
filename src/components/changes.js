@@ -2,7 +2,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './changes.css'
 import { Tooltip } from 'react-tooltip'
 
-export default function Changes({reason, index, text}) {
+export default function Changes({reason, hovered, index, text}) {
 
     const highlightColors = {
         1: ['#FF4136', '#FF1300'],
@@ -19,8 +19,12 @@ export default function Changes({reason, index, text}) {
     
     return (                    
         <span>
-            <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top">{reason}</Tooltip>
-            <p style={{backgroundColor: highlightColors[index + 1][0], display: 'inline'}} className={text.split(" ")[0]}>{text}</p>
+            <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top" className='box'>{reason}</Tooltip>
+            <p className={text.split(" ")[0]}
+            style={{ backgroundColor: (hovered ? highlightColors[index + 1][0] : highlightColors[index + 1][1]), display: 'inline' }}
+            >
+            {text}
+            </p>
         </span>
     )
 }

@@ -1,9 +1,8 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import "./article.css"
-import Changes from './changes.js'
+import "./article.css";
+import Changes from './changes.js';
 
-export default function Article({text, time, type, changes}) {
-
+export default function Article({text, time, type, changes, isHovered, setIsHovered}) {
 
     return (
         <div className="article">
@@ -11,7 +10,7 @@ export default function Article({text, time, type, changes}) {
 
             { text ? 
                 // <p><Changes reason={text}/>{text}</p>
-                <ArticleText text={text} changes={changes} type={type} />
+                <ArticleText text={text} changes={changes} type={type} isHovered={isHovered} setIsHovered={setIsHovered}/>
                 :
                 <div>
                     <p>Loading {type.toLowerCase()} text</p>
@@ -25,7 +24,8 @@ export default function Article({text, time, type, changes}) {
         
 }
 
-const ArticleText = ({text, changes, type}) => {
+
+const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
 
     let changedText = text
     let splitText = [text]
@@ -43,7 +43,9 @@ const ArticleText = ({text, changes, type}) => {
 
             <div>{splitText.map((x) => {
                 if (x.slice(0, 4) === "<!!>") {
-                    return <Changes key={x} index={parseInt(x.slice(5))} reason={changes[parseInt(x.slice(5))][2]} text={x.slice(7)} />
+                    return <span onMouseEnter={() => setIsHovered(parseInt(x.slice(5)), true)} onMouseLeave={() => setIsHovered(parseInt(x.slice(5)), false)}>
+                    <Changes key={x} hovered={isHovered[parseInt(x.slice(5))]} index={parseInt(x.slice(5))} reason={changes[parseInt(x.slice(5))][2]} text={x.slice(7)} />
+                    </span>
                 } else {
                     return <p key={x} style={{display: 'inline'}}>{x}</p>
                 }
