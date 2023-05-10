@@ -36,6 +36,7 @@ const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
             changes[i][pos] = changes[i][pos].replaceAll('"', "")
             console.log(changes[i][pos])
             changedText = changedText.replace(changes[i][pos], "<!><!!><" + i + ">" + changes[i][pos] + "<!>")
+            changedText = changedText.replace(changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1), "<!><!!><" + i + ">" + changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1) + "<!>")
         }
         splitText = changedText.split('<!>')
         console.log(splitText)
