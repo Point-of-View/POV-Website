@@ -62,18 +62,15 @@ function App() {
 
     return (
       <div className="App">
+        <header>
+          <h1>Point of View</h1>
+        </header>
         <main>
           <Article text={original} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
           <Article text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
         </main>
       </div>
     );
-
-  // return (
-  //   <div className="App">
-  //     <div id="loading-screen"></div>
-  //   </div>
-  // );
 }
 
 export default App;

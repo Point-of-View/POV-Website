@@ -1,7 +1,6 @@
 import 'react-tooltip/dist/react-tooltip.css'
 import './changes.css'
 import { Tooltip } from 'react-tooltip'
-import { useState, useEffect } from 'react';
 
 export default function Changes({reason, hovered, index, text}) {
 
@@ -17,8 +16,6 @@ export default function Changes({reason, hovered, index, text}) {
         9: ['#AAAAAA', '#696969'],
         10: ['#111111', '#333333'],
       };
-
-    const [isHovered, setIsHovered] = useState(false);
     
     return (                    
         <span>

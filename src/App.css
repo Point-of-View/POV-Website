@@ -1,26 +1,25 @@
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 40px;
+  background-color: white;
+  padding-top: 80px;
 }
 
-#loading-screen {
-  width: 40px;
-  height: 40px;
+h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: normal;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #DDD;
+  text-transform: uppercase;
 }
 
-#loading-screen::after {
-  content: '';
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 3px solid #555;
-  border-top-color: #999;
-  animation: spin 1s infinite linear;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+header {
+  background-color: #2853c9;
+  padding: 20px 40px;
+  box-shadow: 0 0 8px 4px lightgray;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
 }
 

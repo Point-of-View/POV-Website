@@ -5,11 +5,13 @@ import Changes from './changes.js';
 export default function Article({text, time, type, changes, isHovered, setIsHovered}) {
 
     return (
-        <div className="article">
+        <div className={type === "Original" ? "original" : "translated"}>
             <h2>{type} Text</h2>
 
+            <div className="article">
+
+
             { text ? 
-                // <p><Changes reason={text}/>{text}</p>
                 <ArticleText text={text} changes={changes} type={type} isHovered={isHovered} setIsHovered={setIsHovered}/>
                 :
                 <div>
@@ -18,6 +20,7 @@ export default function Article({text, time, type, changes, isHovered, setIsHove
                 </div>
             }
 
+            </div>
          </div>
                 
     )

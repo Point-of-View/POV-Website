@@ -1,7 +1,21 @@
+h2 {
+    text-align: center;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.translated {
+    background-color: #FCFCFC;
+}
+
 .article {
-    padding: 10px 20px 20px;
-    background-color: lightgray;
+    padding: 20px 40px;
     color: black;
-    border: 1px solid gray;
     white-space: pre-line;
+}
+
+.article p {
+    font-size: 14px;
+    font-family: Arial;
 }
