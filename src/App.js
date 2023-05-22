@@ -3,7 +3,7 @@ import './App.css';
 import Article from './components/article';
 
 
-const DUMMY_DATA = true
+const DUMMY_DATA = false
 
 function getDummyData(updateOriginal, updateTranslated) {
   setTimeout(() =>{

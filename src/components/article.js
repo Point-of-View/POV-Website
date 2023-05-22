@@ -37,10 +37,10 @@ const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
     if (changes) {
         for (let i=0; i < changes.length; i++) {
             changes[i][pos] = changes[i][pos].replaceAll('"', "")
-            console.log(changes[i][pos])
             changedText = changedText.replace(changes[i][pos], "<!><!!><" + i + ">" + changes[i][pos] + "<!>")
-            changedText = changedText.replace(changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1), "<!><!!><" + i + ">" + changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1) + "<!>")
+            // changedText = changedText.replace(changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1), "<!><!!><" + i + ">" + changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1) + "<!>")
         }
+        console.log(changedText)
         splitText = changedText.split('<!>')
         console.log(splitText)
     }
@@ -50,12 +50,19 @@ const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
 
             <div>{splitText.map((x) => {
                 if (x.slice(0, 4) === "<!!>") {
-                    return <span onMouseEnter={() => setIsHovered(parseInt(x.slice(5)), true)} onMouseLeave={() => setIsHovered(parseInt(x.slice(5)), false)}>
-                    <Changes key={x} hovered={isHovered[parseInt(x.slice(5))]} index={parseInt(x.slice(5))} reason={changes[parseInt(x.slice(5))][2]} text={x.slice(7)} />
-                    </span>
+                    let stop = getStop(x)
+                    return <Changes key={x} index={parseInt(x.slice(5,stop))} reason={changes[parseInt(x.slice(5,stop))][2]} text={x.slice(stop+1)} />
                 } else {
                     return <p key={x} style={{display: 'inline'}}>{x}</p>
                 }
             })}</div>
     )
+}
+
+const getStop = (x) => {
+    if (x[6] === '>') {
+        return 6
+    } else {
+        return 7
+    }
 }
