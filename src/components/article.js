@@ -2,11 +2,13 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import "./article.css";
 import Changes from './changes.js';
 
-export default function Article({text, time, type, changes, isHovered, setIsHovered}) {
+export default function Article({text, title, time, type, changes, isHovered, setIsHovered}) {
 
     return (
         <div className={type === "Original" ? "original" : "translated"}>
             <h2>{type} Text</h2>
+
+            <h3>{title}</h3>
 
             <div className="article">
 

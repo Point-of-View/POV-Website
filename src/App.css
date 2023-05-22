@@ -1,8 +1,12 @@
 main {
+  padding: 80px 40px 20px;
+  background-color: white;
+}
+
+.articles {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: white;
-  padding-top: 80px;
 }
 
 h1 {
