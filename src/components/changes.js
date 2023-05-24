@@ -26,8 +26,8 @@ export default function Changes({reason, hovered, index, text}) {
         <span>
             <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top" className='box'>{reason}</Tooltip>
             <p className={text.split(" ")[0]}
-            style={{ backgroundColor: (hovered ? highlightColors[index + 1][0] : highlightColors[index + 1][1]), display: 'inline' }}
-            >
+            style={{ backgroundColor: (hovered ? highlightColors[index][0] : highlightColors[index][1]), display: 'inline' }}
+            onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}>
             {text}
             </p>
         </span>
