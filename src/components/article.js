@@ -8,7 +8,7 @@ export default function Article({text, title, time, type, changes, isHovered, se
         <div className={type === "Original" ? "original" : "translated"}>
             <h2>{type} Text</h2>
 
-            <h3>{title}</h3>
+            <h3>{title && title.trim()}</h3>
 
             <div className="article">
 
@@ -42,9 +42,7 @@ const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
             changedText = changedText.replace(changes[i][pos], "<!><!!><" + i + ">" + changes[i][pos] + "<!>")
             // changedText = changedText.replace(changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1), "<!><!!><" + i + ">" + changes[i][pos].charAt(0).toUpperCase() + changes[i][pos].slice(1) + "<!>")
         }
-        console.log(changedText)
         splitText = changedText.split('<!>')
-        console.log(splitText)
     }
 
 

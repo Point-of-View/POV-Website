@@ -42,11 +42,11 @@ function App() {
 
     const response = await fetch(`http://127.0.0.1:5000/scrape?url=${url}`);
     const responseData = await response.json();
+    console.log(responseData)
     updateOriginal(responseData);
 
     const response2 = await fetch(`http://127.0.0.1:5000/?url=${url}&bias=${bias}`);
     const responseData2 = await response2.json();
-    console.log(responseData2)
     updateTranslated(responseData2);
 }
 
@@ -70,7 +70,10 @@ function App() {
           <h1>Point of View</h1>
         </header>
         <main>
-          {translated && <p>{translated.TONE}</p>}
+          <div className="tone">
+            <h3>New Tone</h3>
+            <p>{translated.TONE ? translated.TONE : "Loading..."}</p>
+          </div>
           <div className="articles">
             <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
             <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>

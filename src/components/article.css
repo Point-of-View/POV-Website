@@ -5,12 +5,20 @@ h2 {
     font-weight: normal;
 }
 
+.original, .translated {
+    padding: 20px 40px;
+}
+
+.original {
+    border-right: 1px solid lightgray;
+}
+
 .translated {
     background-color: #FCFCFC;
+    border-left: 1px solid lightgray;
 }
 
 .article {
-    padding: 20px 40px;
     color: black;
     white-space: pre-line;
 }
