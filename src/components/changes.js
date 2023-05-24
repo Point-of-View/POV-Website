@@ -26,7 +26,7 @@ export default function Changes({reason, index, text, isHovered, setIsHovered}) 
         <span>
             <Tooltip anchorSelect={"."+text.split(" ")[0]} place="top" className='box'>{reason}</Tooltip>
             <p className={text.split(" ")[0]}
-            style={{ backgroundColor: (isHovered ? highlightColors[index + 1][0] : highlightColors[index + 1][1]), display: 'inline' }}
+            style={{ backgroundColor: ((isHovered === index) ? highlightColors[index + 1][0] : highlightColors[index + 1][1]), display: 'inline' }}
             onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}>
             {text}
             </p>
