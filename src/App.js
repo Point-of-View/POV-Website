@@ -54,15 +54,7 @@ function App() {
     getText()
   }, [])
 
-  const [isHovered, setIsHovered] = useState([false, false]);
-
-  function handleSetIsHovered(index, value) {
-    setIsHovered(prevIsHovered => {
-      const newIsHovered = [...prevIsHovered];
-      newIsHovered[index] = value;
-      return newIsHovered;
-    });
-  }
+  const [isHovered, setIsHovered] = useState(-1);
 
     return (
       <div className="App">
@@ -75,8 +67,8 @@ function App() {
             <p>{translated.TONE ? translated.TONE : "Loading..."}</p>
           </div>
           <div className="articles">
-            <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
-            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={handleSetIsHovered}/>
+            <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={setIsHovered}/>
+            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={setIsHovered}/>
           </div>
         </main>
       </div>
