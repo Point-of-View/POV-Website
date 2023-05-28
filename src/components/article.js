@@ -48,12 +48,12 @@ const ArticleText = ({text, changes, type, isHovered, setIsHovered}) => {
 
     return (
 
-            <div>{splitText.map((x) => {
+            <div>{splitText.map((x, i) => {
                 if (x.slice(0, 4) === "<!!>") {
                     let stop = getStop(x)
-                    return <Changes key={x} index={parseInt(x.slice(5,stop))} reason={changes[parseInt(x.slice(5,stop))][2]} text={x.slice(stop+1)}  isHovered={isHovered} setIsHovered={setIsHovered}/>
+                    return <Changes key={type + x.slice(5,stop)} classValue={type + x.slice(5,stop)} index={parseInt(x.slice(5,stop))} reason={changes[parseInt(x.slice(5,stop))][2]} text={x.slice(stop+1)} isHovered={isHovered} setIsHovered={setIsHovered}/>
                 } else {
-                    return <p key={x} style={{display: 'inline'}}>{x}</p>
+                    return <p key={i} style={{display: 'inline'}}>{x}</p>
                 }
             })}</div>
     )
