@@ -68,7 +68,7 @@ function App() {
           </div>
           <div className="articles">
             <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={setIsHovered}/>
-            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Translated"} isHovered={isHovered} setIsHovered={setIsHovered}/>
+            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Transformed"} isHovered={isHovered} setIsHovered={setIsHovered}/>
           </div>
         </main>
       </div>
