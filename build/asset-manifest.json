@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/POV-Website/static/css/main.479a8d1d.css",
-    "main.js": "/POV-Website/static/js/main.74f6d0bb.js",
+    "main.js": "/POV-Website/static/js/main.23653bed.js",
     "static/js/787.fc8e96e9.chunk.js": "/POV-Website/static/js/787.fc8e96e9.chunk.js",
     "index.html": "/POV-Website/index.html",
     "main.479a8d1d.css.map": "/POV-Website/static/css/main.479a8d1d.css.map",
-    "main.74f6d0bb.js.map": "/POV-Website/static/js/main.74f6d0bb.js.map",
+    "main.23653bed.js.map": "/POV-Website/static/js/main.23653bed.js.map",
     "787.fc8e96e9.chunk.js.map": "/POV-Website/static/js/787.fc8e96e9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.479a8d1d.css",
-    "static/js/main.74f6d0bb.js"
+    "static/js/main.23653bed.js"
   ]
 }
