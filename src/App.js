@@ -19,9 +19,9 @@ function getDummyData(updateOriginal, updateTranslated) {
                         TONE: "The new article has a tone of celebration and support for the legislation, emphasizing the Republican-led state's commitment to putting parents back in charge of their children's education and protecting children from inappropriate content. It also emphasizes the bias of the Human Rights Campaign and other left-leaning organizations against the legislation.", TITLE: "Iowa Puts Parents Back in Charge of Education"}
       updateTranslated(responseData);
     }
-    , 5000)
+    , 1750)
   }
-  , 1000)
+  , 250)
 }
 
 
@@ -67,8 +67,8 @@ function App() {
             <p>{translated.TONE ? translated.TONE : "Loading..."}</p>
           </div>
           <div className="articles">
-            <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={"1s"} type={"Original"} isHovered={isHovered} setIsHovered={setIsHovered}/>
-            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={"60s"} type={"Transformed"} isHovered={isHovered} setIsHovered={setIsHovered}/>
+            <Article title={original?.title} text={original.text} changes={translated.CHANGES} time={DUMMY_DATA ? "0.25s" : "1s"} type={"Original"} isHovered={isHovered} setIsHovered={setIsHovered}/>
+            <Article title={translated.TITLE} text={translated.ARTICLE?.replaceAll("\\n", '\n')} changes={translated.CHANGES} time={DUMMY_DATA ? "2s" : "60s"} type={"Transformed"} isHovered={isHovered} setIsHovered={setIsHovered}/>
           </div>
         </main>
       </div>
